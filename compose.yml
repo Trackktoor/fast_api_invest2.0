@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  videoflow:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: videoflow_app
+    ports:
+      - "80:80"
