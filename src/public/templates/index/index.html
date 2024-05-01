@@ -1,29 +1,20 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Video Flow</title>
-        <link href="{{ url_for('static', path='/css/index.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ url_for('static', path='/img/favicon.png') }}" rel="icon" type="image/x-icon">
-        <meta charset="utf-8">
-    </head>
-    <body>
-        <header>
-            <h1>
-                Test App
-            </h1>
-        </header>
-        
-        <main>
-            <h1>
-                Main
-            </h1>
-        </main>
+{% extends "base.html" %}
 
-        <footer>
-            <h1>
-                Footer
-            </h1>
-        </footer>
-    </body>
-</html>
+{% block header %}
+<h1>
+    Header
+</h1>
+{% endblock %}
+
+{% block main %}
+<h1>
+    Main
+</h1>
+{% endblock %}
+
+{% block footer %}
+<h1>
+    Footerrr
+</h1>
+{% endblock %}
 
