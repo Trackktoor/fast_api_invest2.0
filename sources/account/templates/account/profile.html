@@ -1,0 +1,61 @@
+{% extends 'account/base_template_profile.html' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/static/css/profile.css">
+{% endblock %}
+
+{% block title %}
+    StarInvest - Профиль
+{% endblock %}
+    
+{% block content_account %}
+
+    <div class="main_info_header">
+        <div class="avatar">
+            <div class="avatar_container">
+                {% if not current_profile.avatar %}
+                    <img src="/static/img/profile.svg" alt="" class="avatar_img">
+                {% else %}
+                    <img src="{{ current_profile.avatar.url }}" alt="" class="avatar_img">
+                {% endif %}
+                <div class="avatar_info">
+                    <h2>{{current_profile.user.username}}</h2>
+                    {% if current_profile.profile_status != None %}
+                    {{current_profile.profile_status}}
+                    {% else %}
+                    Здесь пока пусто...
+                    {% endif %}
+                </div>
+            </div>
+            <div class="change_profile">
+                <a href="{% url 'edit_profile' %}">Редактировать</a>
+            </div>
+        </div>
+        <div class="info_container_inner">
+            <div class="profile_photos">
+                {% if current_profile.images.count != 0 %}
+                {% for image in current_profile.images.all %}
+                <div class="photo_item_a" style="background-image: url({{image.image.url}});">
+
+                </div>
+                {% endfor %}
+
+                {% else %}
+                Здесь пока пусто..
+                {% endif %}
+            </div>
+            <div class="profile_description">
+                О себе
+                <div class="profile_description_text">
+                        {{current_profile.profile_info}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        if ({{current_profile.user.id}} != {{user.id}}){
+            document.getElementsByClassName('change_profile')[0].remove()
+        }
+    </script>
+{% endblock %}
